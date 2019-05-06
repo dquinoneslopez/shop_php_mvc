@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tienda de camisetas</title>
 
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/styles.css">
 </head>
 <body>
     <!-- CONTAINER -->
@@ -15,7 +15,7 @@
         <!-- HEADER -->
         <header id="header">
             <div id="logo">
-                <img src="assets/img/camiseta.png" alt="Camiseta Logo">
+                <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="Camiseta Logo">
                 <a href="index.php">
                     <h1>Tienda de camisetas</h1>
                 </a>
