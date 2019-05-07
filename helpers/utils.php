@@ -13,4 +13,18 @@ class Utils {
 
     }
 
+    public static function isAdmin(){
+
+        if (isset($_SESSION['admin'])) {
+            
+            return true;
+            
+        } else {
+
+            header("Location: ".BASE_URL);
+
+        }
+
+    }
+
 }

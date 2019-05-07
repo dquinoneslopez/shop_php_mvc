@@ -23,13 +23,13 @@
 
             <?php if(isset($_SESSION['admin'])): ?>
                 <li>
-                    <a href="">Gestionar categorías</a>
+                    <a href="<?= BASE_URL ?>categoria/index">Gestionar categorías</a>
                 </li>
                 <li>
-                    <a href="">Gestionar productos</a>
+                    <a href="<?= BASE_URL ?>">Gestionar productos</a>
                 </li>
                 <li>
-                    <a href="">Gestionar pedidos</a>
+                    <a href="<?= BASE_URL ?>">Gestionar pedidos</a>
                 </li>
 
             <?php endif; ?>
@@ -40,6 +40,12 @@
                 </li>
                 <li>
                     <a href="<?= BASE_URL ?>usuario/logout">Cerrar sesión</a>
+                </li>
+            
+            <?php else: ?>
+
+                <li>
+                    <a href="<?= BASE_URL ?>usuario/registro">Registrarse</a>
                 </li>
             
             <?php endif; ?>
