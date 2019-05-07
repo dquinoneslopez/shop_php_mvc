@@ -27,10 +27,40 @@ class CategoriaController {
         Utils::isAdmin();
 
         if (isset($_POST) && isset($_POST['nombre'])) {
-            
+
             $categoria = new Categoria();
             $categoria->setNombre($_POST['nombre']);
-            $categoria->save();
+
+            $errores = [];
+
+            if (empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/", $nombre)) {
+
+                $errores['nombre'] = "El nombre no es válido.";
+            }
+
+            if (count($errores) === 0) {
+
+                $save = $categoria->save();
+
+                if ($save) {
+                    
+                    $_SESSION['create_category'] =  "complete";
+
+                } else {
+
+                    $_SESSION['create_category'] =  "failed";
+                    
+                }
+
+            } else {
+
+                $_SESSION['errores'] = $errores;
+        
+            }
+
+        } else {
+
+            $_SESSION['create_category'] =  "failed";
 
         }
         
