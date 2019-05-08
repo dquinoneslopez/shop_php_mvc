@@ -65,8 +65,6 @@ class Categoria {
         $query = "INSERT INTO categorias VALUES (NULL,'{$this->getNombre()}');";
         $save = $this->db->query($query);
 
-        echo $this->db->error;
-
         $result = false;
 
         if ($save) {
@@ -76,6 +74,73 @@ class Categoria {
         }
 
         return $result;
+
+    }
+
+    public function update($nuevo){
+
+        $exists = $this->exists($this);
+
+        if ($exists->num_rows === 1) {
+
+            $this->setId($exists->fetch_object()->id);
+            
+            $query = "UPDATE categorias SET nombre = '{$nuevo->getNombre()}' 
+                      WHERE id = '{$this->getId()}';";
+            $update = $this->db->query($query);
+
+        } 
+        
+        $result = false;
+
+        if ($update) {
+            
+            $result = true;
+
+        }
+
+        return $result;
+
+    }
+
+    public function delete($categoria){
+
+        $exists = $this->exists($categoria);
+
+        if ($exists->num_rows === 1) {
+
+            $this->setId($exists->fetch_object()->id);
+            
+            $query = "DELETE FROM categorias 
+                      WHERE id = '{$this->getId()}';";
+            $delete = $this->db->query($query);
+
+        } 
+        
+        $result = false;
+
+        if ($delete) {
+            
+            $result = true;
+
+        }
+
+        return $result;
+
+    }
+
+    public static function exists($categoria){
+
+        $query = "SELECT id FROM categorias WHERE nombre = '{$categoria->getNombre()}';";
+        $result = $categoria->db->query($query);
+
+        if ($result->num_rows === 1) {
+
+            return $result;
+
+        }
+
+        return false;
 
     }
 }

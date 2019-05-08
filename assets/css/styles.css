@@ -30,6 +30,10 @@ a:hover {
     color: red;
 }
 
+.alert_yellow {
+    color: yellow;
+}
+
 table {
     text-align: center;
     width: 100%;
@@ -264,6 +268,18 @@ button,
 .button-red {
     background: red;
     border: 1px solid #cf1717;
+}
+
+.button-yellow {
+    background: rgb(250, 219, 41);
+    border: 1px solid rgb(250, 219, 41);
+}
+
+.button-category {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }
 
 label,

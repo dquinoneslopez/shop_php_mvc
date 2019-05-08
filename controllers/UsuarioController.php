@@ -100,6 +100,7 @@ class UsuarioController {
             if ($identity && is_object($identity)) {
 
                 $_SESSION['identity'] = $identity;
+                $_SESSION['login'] = true;
 
                 if($identity->role === 'admin'){
 
@@ -108,7 +109,7 @@ class UsuarioController {
                 }
             } else {
 
-                $_SESSION['error_login'] = "Identificación fallida.";
+                $_SESSION['login'] = false;
 
             }
 

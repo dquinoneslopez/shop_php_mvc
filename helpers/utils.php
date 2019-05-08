@@ -27,7 +27,7 @@ class Utils {
 
     }
 
-    function showError($errores, $campo) {
+    public static function showError($errores, $campo) {
 
         $alerta = "";
     
@@ -41,7 +41,7 @@ class Utils {
     
     }
     
-    function deleteErrors() {
+    public static function deleteErrors() {
     
         if (isset($_SESSION['errores'])) {
     
@@ -49,30 +49,32 @@ class Utils {
     
         }
     
-        if (isset($_SESSION['errores_entrada'])) {
+        if (isset($_SESSION['errores_nueva'])) {
     
-            unset($_SESSION['errores_entrada']);
-    
-        }
-    
-        if (isset($_SESSION['errores_categoria'])) {
-    
-            unset($_SESSION['errores_categoria']);
+            unset($_SESSION['errores_nueva']);
     
         }
     
-        if (isset($_SESSION['registrado'])) {
+    }
+
+    public static function checkName($name, $nuevo = ''){
+        $errores = [];
+
+        if (empty($name)) {
+
+            $errores['nombre'.$nuevo] = "El nombre no puede estar vacío.";
+
+        } elseif (is_numeric($name)) {
+
+            $errores['nombre'.$nuevo] = "El nombre no puede ser un número.";
+
+        } elseif (preg_match("/[0-9]/", $name)) {
+
+            $errores['nombre'.$nuevo] = "El nombre no puede contener números.";
             
-            unset($_SESSION['registrado']);
-    
-        }  
-        
-        if (isset($_SESSION['actualizado'])) {
-            
-            unset($_SESSION['actualizado']);
-    
         }
-    
+
+        return $errores;
     }
 
 }

@@ -5,6 +5,13 @@
         <?php if(!isset($_SESSION['identity'])): ?>
 
             <h3>Entrar a la web</h3>
+            <?php if(isset($_SESSION['login']) && !$_SESSION['login']): ?>
+
+                <strong class="alert_red">Login fallido.</strong>
+
+                <?php Utils::deleteSession('login'); ?>
+                
+            <?php endif ?>
             <form action="<?= BASE_URL ?>usuario/login" method="post">
                 <label for="email">Email</label>
                 <input type="email" name="email">
@@ -12,6 +19,8 @@
                 <input type="password" name="password">
                 <input type="submit" value="Entrar">
             </form>
+
+            
 
         <?php else: ?>
 
