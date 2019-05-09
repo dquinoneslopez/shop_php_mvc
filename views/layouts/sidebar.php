@@ -35,7 +35,7 @@
                     <a href="<?= BASE_URL ?>categoria/index">Gestionar categorías</a>
                 </li>
                 <li>
-                    <a href="<?= BASE_URL ?>">Gestionar productos</a>
+                    <a href="<?= BASE_URL ?>producto/gestion">Gestionar productos</a>
                 </li>
                 <li>
                     <a href="<?= BASE_URL ?>">Gestionar pedidos</a>
