@@ -210,7 +210,7 @@ class Producto {
 
     public function save(){
 
-        $query = "INSERT INTO productos VALUES (NULL,'{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}',{$this->getPrecio()},{$this->getStock()},null, CURDATE(), null);";
+        $query = "INSERT INTO productos VALUES (NULL,'{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}',{$this->getPrecio()},{$this->getStock()},null, CURDATE(), '{$this->getImagen()}');";
         $save = $this->db->query($query);
 
         $result = false;
