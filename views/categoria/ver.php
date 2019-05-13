@@ -11,17 +11,19 @@
         <?php while($prod = $productos->fetch_object()): ?>
             <div class="product">
 
-                <?php if($prod->imagen == null): ?>
+                <a href="<?= BASE_URL ?>producto/ver&id=<?= $prod->id ?>">
+                    <?php if($prod->imagen == null): ?>
 
-                <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="">    
+                        <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="">    
 
-                <?php else: ?> 
+                    <?php else: ?> 
 
-                    <img src="<?= BASE_URL ?>/uploads/images/<?= $prod->imagen ?>" alt="">
+                        <img src="<?= BASE_URL ?>/uploads/images/<?= $prod->imagen ?>" alt="">
 
-                <?php endif; ?>
-                
-                <h2><?= $prod->nombre ?></h2>
+                    <?php endif; ?>
+
+                    <h2><?= $prod->nombre ?></h2>
+                </a>
                 <p><?= $prod->precio ?> euros</p>
                 <a class="button" href="">Comprar</a>
             </div>

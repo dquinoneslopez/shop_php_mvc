@@ -171,4 +171,23 @@ class ProductoController {
 
     }
 
+    public function ver(){
+
+        Utils::isAdmin();
+
+        if(isset($_GET['id'])){
+
+            $edit = true;
+            
+
+            $producto = new Producto();
+            $producto->setId($_GET['id']);
+            $prod = $producto->getOne();
+
+        } 
+        
+        require_once "views/producto/ver.php";
+
+    }
+
 }
