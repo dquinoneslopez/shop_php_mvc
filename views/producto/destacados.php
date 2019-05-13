@@ -1,37 +1,20 @@
-<h1>Productos destacados</h1>
-<div class="product">
-    <img src="assets/img/camiseta.png" alt="">
-    <h2>Camiseta azul holgada</h2>
-    <p>30 euros</p>
-    <a class="button" href="">Comprar</a>
-</div>
+<h1>Algunos de nuestros productos</h1>
 
-<div class="product">
-    <img src="assets/img/camiseta.png" alt="">
-    <h2>Camiseta azul holgada</h2>
-    <p>30 euros</p>
-    <a class="button" href="">Comprar</a>
-</div>
+<?php while($prod = $productos->fetch_object()): ?>
+    <div class="product">
 
-<div class="product">
-    <img src="assets/img/camiseta.png" alt="">
-    <h2>Camiseta azul holgada</h2>
-    <p>30 euros</p>
-    <a class="button" href="">Comprar</a>
-</div>
+        <?php if($prod->imagen == null): ?>
 
-<div class="product">
-    <img src="assets/img/camiseta.png" alt="">
-    <h2>Camiseta azul holgada</h2>
-    <p>30 euros</p>
-    <a class="button" href="">Comprar</a>
-</div>
+        <img src="assegs/img/camiseta.png" alt="">    
 
-<div class="product">
-    <img src="assets/img/camiseta.png" alt="">
-    <h2>Camiseta azul holgada</h2>
-    <p>30 euros</p>
-    <a class="button" href="">Comprar</a>
-</div>
+        <?php else: ?> 
 
-</div>
+            <img src="<?= BASE_URL ?>/uploads/images/<?= $prod->imagen ?>" alt="">
+
+        <?php endif; ?>
+        
+        <h2><?= $prod->nombre ?></h2>
+        <p><?= $prod->precio ?> euros</p>
+        <a class="button" href="">Comprar</a>
+    </div>
+<?php endwhile; ?>

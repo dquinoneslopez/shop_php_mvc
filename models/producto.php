@@ -233,6 +233,13 @@ class Producto {
 
     }
 
+    public function getRandom($limit){
+
+        $productos = $this->db->query("SELECT * FROM productos ORDER BY RAND() LIMIT $limit;");
+
+        return $productos;
+    }
+
     public function delete(){
 
         $query = "DELETE FROM productos WHERE id = '{$this->id}';";
