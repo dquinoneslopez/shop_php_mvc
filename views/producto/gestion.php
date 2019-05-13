@@ -12,11 +12,19 @@
 
 <?= Utils::deleteSession('producto'); ?> 
 
-<div>
-    <a href="<?= BASE_URL ?>producto/crear" class="button button-small button-category button-gestion">Crear producto</a>
-    <a href="<?= BASE_URL ?>producto/modificar" class="button button-small button-yellow button-category button-gestion">Modificar producto</a>
-    <a href="<?= BASE_URL ?>producto/eliminar" class="button button-small button-red button-category button-gestion">Eliminar producto</a>
-</div>
+<?php if(isset($_SESSION['delete']) && $_SESSION['delete']='completed'): ?>
+
+    <strong class="alert_green">Producto eliminado correctamente.</strong>
+
+<?php elseif(isset($_SESSION['delete']) && $_SESSION['delete']='failed'): ?>
+
+    <strong class="alert_red">Error al eliminar el producto.</strong>
+
+<?php endif; ?>
+
+<?= Utils::deleteSession('delete'); ?> 
+
+<a href="<?= BASE_URL ?>producto/crear" class="button button-small button-gestion">Crear producto</a>
 
 <table>
     <tr>
@@ -24,6 +32,7 @@
         <th>NOMBRE</th>
         <th>PRECIO</th>
         <th>STOCK</th>
+        <th>ACCIONES</th>
     </tr>   
     <?php while($producto = $productos->fetch_object()): ?>
         <tr>
@@ -31,6 +40,10 @@
             <td><?= $producto->nombre ?></td>
             <td><?= $producto->precio ?></td>
             <td><?= $producto->stock ?></td>
+            <td>
+            <a href="<?= BASE_URL ?>producto/editar&id=<?=$producto->id?>" class="button button-gestion button-yellow">Editar</a>
+                <a href="<?= BASE_URL ?>producto/eliminar&id=<?=$producto->id?>" class="button button-gestion button-red">Eliminar</a>
+            </td>
         </tr>
     <?php endwhile; ?>
 </table>

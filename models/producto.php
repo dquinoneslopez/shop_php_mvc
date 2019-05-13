@@ -208,6 +208,14 @@ class Producto {
 
     }
 
+    public function getOne(){
+
+    $producto = $this->db->query("SELECT * FROM productos WHERE id = {$this->getId()}");
+
+        return $producto->fetch_object();
+
+    }
+
     public function save(){
 
         $query = "INSERT INTO productos VALUES (NULL,'{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}',{$this->getPrecio()},{$this->getStock()},null, CURDATE(), '{$this->getImagen()}');";
@@ -216,6 +224,48 @@ class Producto {
         $result = false;
 
         if ($save) {
+            
+            $result = true;
+
+        }
+
+        return $result;
+
+    }
+
+    public function delete(){
+
+        $query = "DELETE FROM productos WHERE id = '{$this->id}';";
+        $delete = $this->db->query($query);
+
+        $result = false;
+
+        if ($delete) {
+            
+            $result = true;
+
+        }
+
+        return $result;
+
+    }
+
+    public function edit(){
+
+        $query = "UPDATE productos SET categoria_id = {$this->categoria_id}, nombre = '{$this->getNombre()}', descripcion = '{$this->getDescripcion()}', precio = {$this->getPrecio()}, stock = {$this->getStock()}";
+        
+        if ($this->getImagen() != null) {
+            
+            $query .= ", imagen = '{$this->getImagen()}'";
+
+        }
+
+        $query .= " WHERE id = {$this->getId()};";
+        $edit = $this->db->query($query);
+
+        $result = false;
+
+        if ($edit) {
             
             $result = true;
 
