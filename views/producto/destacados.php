@@ -5,7 +5,7 @@
 
         <?php if($prod->imagen == null): ?>
 
-        <img src="assegs/img/camiseta.png" alt="">    
+        <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="">    
 
         <?php else: ?> 
 

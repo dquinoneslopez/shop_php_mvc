@@ -1,6 +1,7 @@
 <?php
 
 require_once "models/categoria.php";
+require_once "models/producto.php";
 
 class CategoriaController {
 
@@ -188,6 +189,24 @@ class CategoriaController {
 
         }
 
+    }
+
+    public function ver(){
+
+        if (isset($_GET['id'])) {
+            
+            $categoria = new Categoria();
+            $categoria->setId($_GET['id']);
+            $categoria = $categoria->getOne();
+
+            $producto = new Producto();
+            $producto->setCategoria_id($_GET['id']);
+
+            $productos = $producto->getAllCategory();
+        }
+
+        require_once "views/categoria/ver.php";
+    
     }
 
 }
