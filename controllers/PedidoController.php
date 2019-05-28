@@ -2,10 +2,12 @@
 
 class PedidoController {
 
-public function index(){
+    public function index(){
 
-    echo "Controlador Pedidos, Acción Index";
+        echo "Controlador Pedidos, Acción Index";
 
-}
+    }
+
+    public function add(){}
 
 }
