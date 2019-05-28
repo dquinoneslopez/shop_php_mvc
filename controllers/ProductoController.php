@@ -112,7 +112,8 @@ class ProductoController {
 
         }
 
-        header("Location: ".BASE_URL."producto/gestion");
+        // header("Location: ".BASE_URL."producto/gestion");
+        Utils::redirection(BASE_URL."producto/gestion");
 
     }
 
@@ -135,7 +136,8 @@ class ProductoController {
 
         } else {
 
-            header("Location: ".BASE_URL."producto/gestion");
+            // header("Location: ".BASE_URL."producto/gestion");
+            Utils::redirection(BASE_URL."producto/gestion");
 
         }
 
@@ -167,7 +169,8 @@ class ProductoController {
 
         }
 
-        header("Location: ".BASE_URL."producto/gestion");
+        // header("Location: ".BASE_URL."producto/gestion");
+        Utils::redirection(BASE_URL."producto/gestion");
 
     }
 

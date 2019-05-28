@@ -83,7 +83,8 @@ class UsuarioController {
 
         }
         
-        header("Location:".BASE_URL."usuario/registro");
+        // header("Location: ".BASE_URL."usuario/registro");
+        Utils::redirection(BASE_URL."usuario/registro");
 
     }
 
@@ -115,7 +116,8 @@ class UsuarioController {
 
         }
 
-        header("Location: ".BASE_URL);
+        // header("Location: ".BASE_URL);
+        Utils::redirection(BASE_URL);
 
     }
 
@@ -133,7 +135,8 @@ class UsuarioController {
 
         }
 
-        header("Location: ".BASE_URL);
+        // header("Location: ".BASE_URL);
+        Utils::redirection(BASE_URL);
 
     }
 

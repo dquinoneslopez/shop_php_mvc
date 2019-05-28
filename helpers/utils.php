@@ -21,7 +21,8 @@ class Utils {
 
         } else {
 
-            header("Location: ".BASE_URL);
+            // header("Location: ".BASE_URL);
+            Utils::redirection(BASE_URL);
 
         }
 
@@ -86,6 +87,10 @@ class Utils {
 
         return $categorias;
 
+    }
+
+    public static function redirection($url){
+        ?><script> window.location.href = '<?=$url?>'; </script><?php
     }
 
 }
