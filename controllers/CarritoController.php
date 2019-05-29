@@ -6,7 +6,11 @@ class CarritoController {
 
     public function index(){
 
-        echo "Controlador Carrito, Acción Index";
+        // echo "Controlador Carrito, Acción Index";
+
+        $carrito = $_SESSION['carrito'];
+
+        require_once "views/carrito/index.php";
 
     }
 
@@ -23,12 +27,12 @@ class CarritoController {
         }
 
         if (isset($_SESSION['carrito'])) {
-
-            $counter = 0;
             
+            $counter = 0;
+
             foreach($_SESSION['carrito'] as $indice => $elemento){
 
-                if ($elemento['id_producto'] === $producto_id) {
+                if ($elemento['id_producto'] == $producto_id) {
                     
                     $_SESSION['carrito'][$indice]['unidades']++;
                     $counter++;
@@ -48,7 +52,7 @@ class CarritoController {
             if (is_object($producto)) {
                 
                 $_SESSION['carrito'][] = array(
-                    "id_producto" => $producto-id,
+                    "id_producto" => $producto->id,
                     "precio" => $producto->precio,
                     "unidades" => 1,
                     "producto" => $producto
@@ -66,7 +70,8 @@ class CarritoController {
 
     public function delete_all(){
 
-        unset($_SESSION['carrito']);
+        Utils::deleteSession('carrito');
+        Utils::redirection(BASE_URL."carrito/index");
 
     }
 
