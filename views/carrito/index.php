@@ -1,4 +1,6 @@
-<?php if(isset($_SESSION['carrito'])): ?>
+<?php if(isset($_SESSION['identity'])): ?>
+
+    <?php if(isset($_SESSION['carrito'])): ?>
 
     <h1>Carrito de la compra</h1>
 
@@ -53,15 +55,21 @@
     <br>
 
     <div class="total-carrito">
-    
+
         <?php $stats = Utils::statsCarrito() ?>
         <h3>Precio total: <?= $stats['total'] ?></h3>
-        <a href="" class="button button-pedido">Hacer pedido</a>
+        <a href="<?= BASE_URL ?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
 
     </div>
 
-<?php else: ?>
+    <?php else: ?>
 
     <h1>Carrito de la compra vacío.</h1>
 
-<?php endif;?>
+    <?php endif;?>
+
+<?php else: ?>
+
+    <?php Utils::redirection(BASE_URL) ?>
+
+<?php endif; ?>
