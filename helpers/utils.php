@@ -28,6 +28,21 @@ class Utils {
 
     }
 
+    public static function isIdentity(){
+
+        if (isset($_SESSION['identity'])) {
+            
+            return true;
+
+        } else {
+
+            // header("Location: ".BASE_URL);
+            Utils::redirection(BASE_URL);
+
+        }
+
+    }
+
     public static function showError($errores, $campo) {
 
         $alerta = "";

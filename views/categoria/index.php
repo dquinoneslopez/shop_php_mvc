@@ -46,8 +46,8 @@
             <td><?= $categoria->id ?></td>
             <td><?= $categoria->nombre ?></td>
             <td>
-                <a href="<?= BASE_URL ?>categoria/modificar&<?= $categoria->id ?>" class="button button-yellow button-gestion">Modificar</a>
-                <a href="<?= BASE_URL ?>categoria/eliminar&<?= $categoria->id ?>" class="button button-red button-gestion">Eliminar</a>
+                <a href="<?= BASE_URL ?>categoria/modificar" class="button button-yellow button-gestion">Modificar</a>
+                <a href="<?= BASE_URL ?>categoria/eliminar" class="button button-red button-gestion">Eliminar</a>
             </td>
         </tr>
     <?php endwhile; ?>

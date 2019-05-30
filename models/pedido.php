@@ -202,7 +202,9 @@ class Pedido {
 
     public function getAll(){
 
-        $pedidos = $this->db->query("SELECT * FROM pedidos ORDER BY id DESC");
+        $pedidos = $this->db->query("SELECT * 
+                                     FROM pedidos 
+                                     ORDER BY id DESC");
 
         return $pedidos;
 
@@ -210,7 +212,9 @@ class Pedido {
 
     public function getOne(){
 
-        $producto = $this->db->query("SELECT * FROM pedidos WHERE id = {$this->getId()}");
+        $producto = $this->db->query("SELECT * 
+                                      FROM pedidos 
+                                      WHERE id = {$this->getId()}");
 
         return $producto->fetch_object();
 
@@ -222,10 +226,24 @@ class Pedido {
                   FROM pedidos p 
                   WHERE p.usuario_id = {$this->getUsuario_id()} 
                   ORDER BY id DESC LIMIT 1;";
+        
         $pedido = $this->db->query($query);
     
         return $pedido->fetch_object();
     
+    }
+
+    public function getAllByUser(){
+
+        $query = "SELECT * 
+                  FROM pedidos 
+                  WHERE usuario_id = {$this->getUsuario_id()} 
+                  ORDER BY id DESC;";
+        
+        $pedidos = $this->db->query($query);
+
+        return $pedidos;
+
     }
 
     public function getProductosByPedido($id){

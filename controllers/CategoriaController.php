@@ -48,19 +48,22 @@ class CategoriaController {
                     
                 }
 
-                header("Location: ".BASE_URL."categoria/index");
+                // header("Location: ".BASE_URL."categoria/index");
+                Utils::redirection(BASE_URL."categoria/index");
 
             } else {
 
                 $_SESSION['errores'] = $errores;
-                header("Location: ".BASE_URL."categoria/crear");
+                // header("Location: ".BASE_URL."categoria/crear");
+                Utils::redirection(BASE_URL."categoria/crear");
         
             }
 
         } else {
 
             $_SESSION['create_category'] =  "failed";
-            header("Location: ".BASE_URL."categoria/index");
+            // header("Location: ".BASE_URL."categoria/index");
+            Utils::redirection(BASE_URL."categoria/index");
 
         }
 
@@ -104,13 +107,15 @@ class CategoriaController {
                         
                     }
 
-                    header("Location: ".BASE_URL."categoria/index");
+                    // header("Location: ".BASE_URL."categoria/index");
+                    Utils::redirection(BASE_URL."categoria/index");
 
                 } else {
 
                     $_SESSION['errores'] = $errores;
                     $_SESSION['errores_nueva'] = $errores_nueva;
-                    header("Location: ".BASE_URL."categoria/modificar");
+                    // header("Location: ".BASE_URL."categoria/modificar");
+                    Utils::redirection(BASE_URL."categoria/modificar");
             
                 }
 
@@ -118,14 +123,16 @@ class CategoriaController {
 
                 $errores['nombre'] = "No existe la categoría.";
                 $_SESSION['errores'] = $errores;
-                header("Location: ".BASE_URL."categoria/modificar");
+                // header("Location: ".BASE_URL."categoria/modificar");
+                Utils::redirection(BASE_URL."categoria/modificar");
 
             }
 
         } else {
 
             $_SESSION['update_category'] =  "failed";
-            header("Location: ".BASE_URL."categoria/index");
+            // header("Location: ".BASE_URL."categoria/index");
+            Utils::redirection(BASE_URL."categoria/index");
 
         }
 
@@ -165,12 +172,14 @@ class CategoriaController {
                         
                     }
 
-                    header("Location: ".BASE_URL."categoria/index");
+                    // header("Location: ".BASE_URL."categoria/index");
+                    Utils::redirection(BASE_URL."categoria/index");
 
                 } else {
 
                     $_SESSION['errores'] = $errores;
-                    header("Location: ".BASE_URL."categoria/eliminar");
+                    // header("Location: ".BASE_URL."categoria/eliminar");
+                    Utils::redirection(BASE_URL."categoria/eliminar");
             
                 }
 
@@ -178,14 +187,16 @@ class CategoriaController {
 
                 $errores['nombre'] = "No existe la categoría.";
                 $_SESSION['errores'] = $errores;
-                header("Location: ".BASE_URL."categoria/eliminar");
+                // header("Location: ".BASE_URL."categoria/eliminar");
+                Utils::redirection(BASE_URL."categoria/eliminar");
 
             }
 
         } else {
 
             $_SESSION['update_category'] =  "failed";
-            header("Location: ".BASE_URL."categoria/index");
+            // header("Location: ".BASE_URL."categoria/index");
+            Utils::redirection(BASE_URL."categoria/index");
 
         }
 
