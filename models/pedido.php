@@ -212,9 +212,10 @@ class Pedido {
 
     public function getOne(){
 
-        $producto = $this->db->query("SELECT * 
-                                      FROM pedidos 
-                                      WHERE id = {$this->getId()}");
+        $producto = $this->db->query("SELECT p.*, u.nombre, u.apellidos, u.email, u.role 
+                                      FROM pedidos p
+                                      INNER JOIN usuarios u ON u.id = p.usuario_id
+                                      WHERE p.id = {$this->getId()};");
 
         return $producto->fetch_object();
 

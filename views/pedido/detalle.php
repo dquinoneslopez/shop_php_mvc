@@ -1,4 +1,4 @@
-  <h1>Detalles de envío</h1>
+  <h1>Detalles del pedido</h1>
   
   <?php if(isset($pedido)): ?>
 
@@ -19,13 +19,20 @@
 
         </form>
 
+        <h3>Datos del usuario</h3>
+        Nombre: <?= $pedido->nombre ?> <br>
+        Apellidos: <?= $pedido->apellidos ?> <br>
+        Email: <?= $pedido->email ?> <br>
+        Rol: <?= $pedido->role ?> <br><br>
+
     <?php endif; ?>
   
+    <h3>Dirección de envío</h3>
     Provincia: <?= $pedido->provincia ?> <br>
     Localidad: <?= $pedido->localidad ?> <br>
     Dirección: <?= $pedido->direccion ?> <br><br>
 
-    <h3>Detalles del pedido</h3>
+    <h3>Datos del pedido</h3>
     Estado: <?= Utils::showStatus($pedido->estado) ?> <br>
     Número de pedido: <?= $pedido->id ?> <br>
     Total a pagar: <?= $pedido->coste ?> € <br>
@@ -73,6 +80,6 @@
 
     </table>
 
-    <a href="<?= BASE_URL ?>pedido/mis_pedidos" class="button">Volver</a>
+    <a href="<?= BASE_URL ?>pedido/mis_pedidos" class="button button-pedido">Volver</a>
 
 <?php endif; ?>
