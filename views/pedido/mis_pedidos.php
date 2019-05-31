@@ -1,4 +1,14 @@
-<h1>Mis pedidos</h1>
+<?php if(isset($gestion)): ?>
+
+    <h1>Gestionar pedidos</h1>
+
+<?php else: ?>
+
+    <h1>Mis pedidos</h1>
+
+<?php endif; ?>
+
+
 
 <table class="table">
 
@@ -6,6 +16,7 @@
         <th>Nº de pedido</th>
         <th>Coste</th>
         <th>Fecha</th>
+        <th>Estado</th>
     </thead>
 
     <tbody>
@@ -21,6 +32,9 @@
                 </td>
                 <td>
                     <?= $pedido->fecha ?>
+                </td>
+                <td>
+                    <?= Utils::showStatus($pedido->estado) ?>
                 </td>
             </tr>            
 

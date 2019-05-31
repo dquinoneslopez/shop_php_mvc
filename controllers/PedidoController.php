@@ -126,4 +126,42 @@ class PedidoController {
 
     }
 
+    public function gestion(){
+
+        Utils::isAdmin();
+
+        $gestion = true;
+
+        $pedido = new Pedido();
+        $pedidos = $pedido->getAll();
+
+        require_once "views/pedido/mis_pedidos.php";
+
+    }
+
+    public function estado(){
+
+        Utils::isAdmin();
+
+        if (isset($_POST['pedido_id'])) {
+
+            $id = $_POST['pedido_id'];
+            $estado = $_POST['estado'];
+            
+            $pedido = new Pedido();
+            $pedido->setId($id);
+            $pedido->setEstado($estado);
+            $pedido->updateOne();
+
+            Utils::redirection(BASE_URL."pedido/detalle&id=".$id);
+
+        } else {
+            
+            Utils::redirection(BASE_URL);
+
+        }
+        
+
+    }
+
 }

@@ -281,4 +281,22 @@ class Pedido {
 
     }
 
+    public function updateOne(){
+
+        $query = "UPDATE pedidos SET estado = '{$this->getEstado()}'
+                  WHERE id = {$this->getId()};";
+        
+        $update = $this->db->query($query);
+
+        $result = false;
+
+        if ($update) {
+            
+            $result = true;
+        } 
+        
+        return $result;        
+
+    }
+
 }
