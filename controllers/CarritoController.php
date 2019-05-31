@@ -8,9 +8,13 @@ class CarritoController {
 
         // echo "Controlador Carrito, Acción Index";
 
-        if (isset($_SESSION['carrito'])) {
+        if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) >= 1) {
             
             $carrito = $_SESSION['carrito'];
+
+        } else {
+
+            $carrito = array();
 
         }
 
@@ -70,7 +74,18 @@ class CarritoController {
 
     }
 
-    public function remove(){}
+    public function delete(){
+
+        if(isset($_GET['index'])){
+
+            $index = $_GET['index'];
+            unset($_SESSION['carrito'][$index]);
+
+        }
+
+        Utils::redirection(BASE_URL."carrito/index");
+
+    }
 
     public function delete_all(){
 
@@ -78,5 +93,7 @@ class CarritoController {
         Utils::redirection(BASE_URL."carrito/index");
 
     }
+
+
 
 }

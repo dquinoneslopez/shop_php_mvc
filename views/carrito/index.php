@@ -1,70 +1,80 @@
 <?php if(isset($_SESSION['identity'])): ?>
 
-    <?php if(isset($_SESSION['carrito'])): ?>
+    <?php if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) >= 1): ?>
 
-    <h1>Carrito de la compra</h1>
+        <h1>Carrito de la compra</h1>
 
-    <table class="table">
+        <table class="table">
 
-        <thead>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Unidades</th>
-        </thead>
+            <thead>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Unidades</th>
+                <th>Eliminar</th>
+            </thead>
 
-        <tbody>
-        
-            <?php 
-                
-                foreach($carrito as $indice => $elemento): 
-
-                    $producto = $elemento['producto'];
+            <tbody>
+            
+                <?php 
                     
-            ?>
+                    foreach($carrito as $indice => $elemento): 
 
-                <tr>
-                    <td>
-                        <?php if($producto->imagen == null): ?>
+                        $producto = $elemento['producto'];
+                        
+                ?>
 
-                            <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="" class="img_carrito">    
+                    <tr>
+                        <td>
+                            <?php if($producto->imagen == null): ?>
 
-                            <?php else: ?> 
+                                <img src="<?= BASE_URL ?>assets/img/camiseta.png" alt="" class="img_carrito">    
 
-                            <img src="<?= BASE_URL ?>/uploads/images/<?= $producto->imagen ?>" alt="" class="img_carrito">
+                                <?php else: ?> 
 
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="<?= BASE_URL?>producto/ver&id=<?= $producto->id ?>"><?= $producto->nombre ?></a>
-                    </td>
-                    <td>
-                        <?= $producto->precio ?>
-                    </td>
-                    <td>
-                        <?= $elemento['unidades'] ?>
-                    </td>
-                </tr>            
+                                <img src="<?= BASE_URL ?>/uploads/images/<?= $producto->imagen ?>" alt="" class="img_carrito">
 
-            <?php endforeach; ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="<?= BASE_URL?>producto/ver&id=<?= $producto->id ?>"><?= $producto->nombre ?></a>
+                        </td>
+                        <td>
+                            <?= $producto->precio ?>
+                        </td>
+                        <td>
+                            <?= $elemento['unidades'] ?>
+                        </td>
+                        <td>
+                        <a href="<?= BASE_URL ?>carrito/delete&index=<?=$indice?>" class="button button-carrito button-red">Eliminar</a>
+                        </td>
+                    </tr>            
 
-        </tbody>
+                <?php endforeach; ?>
 
-    </table>
+            </tbody>
 
-    <br>
+        </table>
 
-    <div class="total-carrito">
+        <br>
 
-        <?php $stats = Utils::statsCarrito() ?>
-        <h3>Precio total: <?= $stats['total'] ?></h3>
-        <a href="<?= BASE_URL ?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
+        <div class="delete-carrito">
+        
+            <a href="<?= BASE_URL ?>carrito/delete_all" class="button button-delete button-red">Vaciar carrito</a>
+        
+        </div>
 
-    </div>
+        <div class="total-carrito">
+
+            <?php $stats = Utils::statsCarrito() ?>
+            <h3>Precio total: <?= $stats['total'] ?></h3>
+            <a href="<?= BASE_URL ?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
+
+        </div>
 
     <?php else: ?>
 
-    <h1>Carrito de la compra vacío.</h1>
+        <h1>Carrito de la compra vacío.</h1>
 
     <?php endif;?>
 
