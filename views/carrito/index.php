@@ -44,6 +44,10 @@
                         </td>
                         <td>
                             <?= $elemento['unidades'] ?>
+                            <div class="updown-unidades">
+                                <a href="<?=BASE_URL?>carrito/down&index=<?=$indice?>" class="button">-</a>
+                                <a href="<?=BASE_URL?>carrito/up&index=<?=$indice?>" class="button">+</a>
+                            </div>
                         </td>
                         <td>
                         <a href="<?= BASE_URL ?>carrito/delete&index=<?=$indice?>" class="button button-carrito button-red">Eliminar</a>

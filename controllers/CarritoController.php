@@ -94,6 +94,37 @@ class CarritoController {
 
     }
 
+    public function up(){
 
+        if(isset($_GET['index'])){
+
+            $index = $_GET['index'];
+            $_SESSION['carrito'][$index]['unidades']++;
+
+        }
+
+        Utils::redirection(BASE_URL."carrito/index");
+
+    }
+
+    public function down(){
+
+        if(isset($_GET['index'])){
+
+            $index = $_GET['index'];
+            
+            $_SESSION['carrito'][$index]['unidades']--;
+            
+            if ($_SESSION['carrito'][$index]['unidades'] == 0) {
+                
+                unset($_SESSION['carrito'][$index]);
+
+            } 
+            
+        }
+
+        Utils::redirection(BASE_URL."carrito/index");
+
+    }
 
 }
