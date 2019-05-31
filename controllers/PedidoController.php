@@ -44,10 +44,11 @@ class PedidoController {
                 $linea_pedido->setUnidades($elemento['unidades']);
 
                 $save_linea = $linea_pedido->save();
+                $update_stock = $pedido->updateStock($producto->id, $elemento['unidades']);
     
             }
 
-            if ($save && $save_linea) {
+            if ($save && $save_linea && $update_stock) {
                 
                 $_SESSION['pedido'] = 'completed';
                 

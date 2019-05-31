@@ -300,4 +300,47 @@ class Pedido {
 
     }
 
+    public function updateStock($id, $unidades){
+
+        $query = "SELECT stock
+                  FROM productos
+                  WHERE id = {$id};";
+
+        $producto = $this->db->query($query);
+        
+
+        if ($producto) {
+
+            $stock = $producto->fetch_object()->stock;
+            $new_stock = 0;
+
+            if ($stock > 0) {
+
+                if ($stock-$unidades > 0) {
+                    
+                    $new_stock = $stock-$unidades;
+
+                }
+                /* TO DO */
+                /* Informar si no hay stock suficiente para realizar el pedido */
+            } 
+
+            $query = "UPDATE productos SET stock = {$new_stock}
+                      WHERE id = {$id};";
+            $update = $this->db->query($query);
+
+            $result = false;
+            
+            if ($update) {
+                
+                $result = true;
+
+            }
+
+            return $result;
+
+        }
+        
+    }
+
 }
